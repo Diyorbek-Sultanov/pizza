@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pizza</title>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<header class="header">
+				<div class="header__logo">
+					<img src="./images/pizza-logo.png" alt="logo" />
+					<div class="header__logo-title">
+						<h5 class="header__logo-title">Нам Нам Пицца</h5>
+						<p class="header__logo-desc">
+							Мы предлагаем вам лучшие пиццы в городе
+						</p>
+					</div>
+				</div>
+
+				<button class="btn" type="button" id="show-btn">
+					Корзина
+					<span>0</span>
+				</button>
+			</header>
+
+			<section class="pizza">
+				<div class="pizza__item">
+					<img src="./images/pizza-1.png" alt="pizza" />
+					<h5 class="pizza__item-title">Додо</h5>
+					<p class="pizza__item-desc">
+						Индейка, говядина, пепперони с говядиной, моцарелла из цельного
+						молока, шампиньоны, сладкий перец, красный лук, томатный соус,
+						томаты
+					</p>
+					<div class="pizza__item-info">
+						<h4 class="pizza__item-price">65000 сум</h4>
+						<button class="btn btn--pizza">Заказать</button>
+					</div>
+				</div>
+
+				<div class="pizza__item">
+					<img src="./images/pizza-1.png" alt="pizza" />
+					<h5 class="pizza__item-title">Четыре сезона</h5>
+					<p class="pizza__item-desc">
+						Моцарелла из цельного молока, индейка, пепперони с говядиной,
+						брынза, томаты, шампиньоны, томатный соус, итальянские травы
+					</p>
+					<div class="pizza__item-info">
+						<h4 class="pizza__item-price">55000 сум</h4>
+						<button class="btn">Заказать</button>
+					</div>
+				</div>
+
+				<div class="pizza__item">
+					<img src="./images/pizza-1.png" alt="pizza" />
+					<h5 class="pizza__item-title">Сырный цыпленок</h5>
+					<p class="pizza__item-desc">
+						Цыпленок, моцарелла из цельного молока, сырный соус, томаты
+					</p>
+					<div class="pizza__item-info">
+						<h4 class="pizza__item-price">45000 сум</h4>
+						<button class="btn">Заказать</button>
+					</div>
+				</div>
+
+				<div class="pizza__item">
+					<img src="./images/pizza-1.png" alt="pizza" />
+					<h5 class="pizza__item-title">Двойная пепперони</h5>
+					<p class="pizza__item-desc">
+						Пепперони с говядиной, увеличенная порция моцареллы из цельного
+						молока, томатный соус
+					</p>
+					<div class="pizza__item-info">
+						<h4 class="pizza__item-price">65000 сум</h4>
+						<button class="btn">Заказать</button>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<!-- Cart -->
+		<div class="cart" id="cart">
+			<h4 class="cart__title">Корзина</h4>
+			<div class="cart__list">
+				<div class="cart__list-item">
+					<div class="cart__item-img">
+						<img src="./images/pizza-1.png" alt="pizza" />
+						<p class="cart__item-title">Двойная пепперони</p>
+					</div>
+					<div class="cart__item-counter">
+						<button class="btn">+</button>
+						<span>1</span>
+						<button class="btn">-</button>
+					</div>
+					<div class="cart__item-price">45000 сум</div>
+					<button class="cart__item-close" type="button">&times;</button>
+				</div>
+			</div>
+
+			<button
+				class="cart__item-close cart__item-close--cart"
+				type="button"
+				id="close-btn"
+			>
+				&times;
+			</button>
+		</div>
+
+		<script src="./app.js"></script>
+	</body>
+</html>
