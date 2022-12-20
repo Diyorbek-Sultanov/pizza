@@ -22,83 +22,17 @@
 
 				<button class="btn" type="button" id="show-btn">
 					Корзина
-					<span>0</span>
+					<span id="cart-count">0</span>
 				</button>
 			</header>
 
-			<section class="pizza">
-				<div class="pizza__item">
-					<img src="./images/pizza-1.png" alt="pizza" />
-					<h5 class="pizza__item-title">Додо</h5>
-					<p class="pizza__item-desc">
-						Индейка, говядина, пепперони с говядиной, моцарелла из цельного
-						молока, шампиньоны, сладкий перец, красный лук, томатный соус,
-						томаты
-					</p>
-					<div class="pizza__item-info">
-						<h4 class="pizza__item-price">65000 сум</h4>
-						<button class="btn btn--pizza">Заказать</button>
-					</div>
-				</div>
-
-				<div class="pizza__item">
-					<img src="./images/pizza-1.png" alt="pizza" />
-					<h5 class="pizza__item-title">Четыре сезона</h5>
-					<p class="pizza__item-desc">
-						Моцарелла из цельного молока, индейка, пепперони с говядиной,
-						брынза, томаты, шампиньоны, томатный соус, итальянские травы
-					</p>
-					<div class="pizza__item-info">
-						<h4 class="pizza__item-price">55000 сум</h4>
-						<button class="btn">Заказать</button>
-					</div>
-				</div>
-
-				<div class="pizza__item">
-					<img src="./images/pizza-1.png" alt="pizza" />
-					<h5 class="pizza__item-title">Сырный цыпленок</h5>
-					<p class="pizza__item-desc">
-						Цыпленок, моцарелла из цельного молока, сырный соус, томаты
-					</p>
-					<div class="pizza__item-info">
-						<h4 class="pizza__item-price">45000 сум</h4>
-						<button class="btn">Заказать</button>
-					</div>
-				</div>
-
-				<div class="pizza__item">
-					<img src="./images/pizza-1.png" alt="pizza" />
-					<h5 class="pizza__item-title">Двойная пепперони</h5>
-					<p class="pizza__item-desc">
-						Пепперони с говядиной, увеличенная порция моцареллы из цельного
-						молока, томатный соус
-					</p>
-					<div class="pizza__item-info">
-						<h4 class="pizza__item-price">65000 сум</h4>
-						<button class="btn">Заказать</button>
-					</div>
-				</div>
-			</section>
+			<section class="pizza" id="pizzas"></section>
 		</div>
 
 		<!-- Cart -->
 		<div class="cart" id="cart">
 			<h4 class="cart__title">Корзина</h4>
-			<div class="cart__list">
-				<div class="cart__list-item">
-					<div class="cart__item-img">
-						<img src="./images/pizza-1.png" alt="pizza" />
-						<p class="cart__item-title">Двойная пепперони</p>
-					</div>
-					<div class="cart__item-counter">
-						<button class="btn">+</button>
-						<span>1</span>
-						<button class="btn">-</button>
-					</div>
-					<div class="cart__item-price">45000 сум</div>
-					<button class="cart__item-close" type="button">&times;</button>
-				</div>
-			</div>
+			<div class="cart__list" id="cart-list"></div>
 
 			<button
 				class="cart__item-close cart__item-close--cart"
@@ -107,6 +41,13 @@
 			>
 				&times;
 			</button>
+
+			<div class="cart__price-info">
+				<h4 class="cart__price">
+					Итого: <span id="price-value">45000</span>сум
+				</h4>
+				<button class="btn">Заказать</button>
+			</div>
 		</div>
 
 		<script src="./app.js"></script>
