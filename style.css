@@ -123,6 +123,8 @@ button {
 .cart {
 	padding: 20px;
 	width: 42%;
+	max-height: 500px;
+	overflow-y: scroll;
 	min-height: auto;
 	position: fixed;
 	top: 10px;
@@ -158,6 +160,7 @@ button {
 	display: flex;
 	align-items: center;
 	column-gap: 10px;
+	width: 200px;
 }
 
 .cart__item-title {
@@ -168,6 +171,11 @@ button {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	row-gap: 10px;
+}
+
+.btn--counter {
+	padding: 5px;
 }
 
 .cart__item-price {
@@ -185,6 +193,16 @@ button {
 	position: absolute;
 	top: 20px;
 	right: 20px;
+}
+
+.cart__price-info {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.cart__price {
+	font-size: 1.2rem;
 }
 
 /* ScrollBar */
