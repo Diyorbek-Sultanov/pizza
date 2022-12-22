@@ -6,8 +6,12 @@ window.addEventListener('DOMContentLoaded', () => {
 	const cartList = document.getElementById('cart-list')
 	const cartCount = document.getElementById('cart-count')
 	const cartPrice = document.getElementById('price-value')
+	const modal = document.getElementById('modal')
+	const showModalBtn = document.getElementById('show-modal')
+	const modalCloseBtn = document.getElementById('modal-close')
 
 	let pizzaId = 1
+	let countPizza = 1
 
 	loadPizzas() // Pizzas load from JSON file
 	loadCart() // Load cart pizzas from LocalStorage
@@ -21,6 +25,15 @@ window.addEventListener('DOMContentLoaded', () => {
 	closeBtn.addEventListener('click', () => {
 		cart.classList.remove('show')
 		document.body.style.overflow = 'auto'
+	})
+
+	// Show/Hide modal
+	showModalBtn.addEventListener('click', () => {
+		modal.classList.add('show')
+	})
+
+	modalCloseBtn.addEventListener('click', () => {
+		modal.classList.remove('show')
 	})
 
 	// Add pizza to cart
@@ -100,16 +113,20 @@ window.addEventListener('DOMContentLoaded', () => {
 				<img src="${pizza.img}" alt="pizza" />
 				<p class="cart__item-title">${pizza.title}</p>
 			</div>
-			<div class="cart__item-counter">
-				<button class="btn">+</button>
-				<span>1</span>
-				<button class="btn">-</button>
+			<div class="cart__item-counter" id="counter-wrap">
+				<button class="btn plus">+</button>
+				<span id="count-val">${countPizza}</span>
+				<button class="btn minus">-</button>
 			</div>
 			<div class="cart__item-price">${pizza.price}</div>
 			<button class="cart__item-close" type="button">&times;</button>
 		`
-
 		cartList.append(cartItem)
+
+		const counterWrap = document.getElementById('counter-wrap')
+
+		// Plus/Minus
+		counterWrap.addEventListener('click', counterVal)
 	}
 
 	// Saving pizzas to LocalStorage
@@ -169,6 +186,21 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			localStorage.setItem('pizzas', JSON.stringify(updateProduct))
 			updateInfoCart()
+		}
+	}
+
+	let countValue = document.getElementById('count-val')
+	console.log(countValue)
+
+	function counterVal(e) {
+		if (e.target.classList.contains('plus')) {
+			countPizza++
+			countValue.textContent = countPizza
+		} else if (e.target.classList.contains('minus')) {
+			if (countPizza >= 1) {
+				countPizza--
+				countValue.innerHTML = countPizza
+			}
 		}
 	}
 })

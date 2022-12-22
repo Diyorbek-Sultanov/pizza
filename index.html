@@ -46,7 +46,33 @@
 				<h4 class="cart__price">
 					Итого: <span id="price-value">45000</span>сум
 				</h4>
-				<button class="btn">Заказать</button>
+				<button class="btn" id="show-modal">Заказать</button>
+			</div>
+		</div>
+
+		<!-- Contact modal -->
+		<div class="modal" id="modal">
+			<div class="modal__overley">
+				<div class="modal__content">
+					<div class="modal__content-close" id="modal-close">&times;</div>
+					<form class="modal__content-form">
+						<input
+							class="modal__conten-input"
+							type="text"
+							name="username"
+							placeholder="Name"
+							required
+						/>
+						<input
+							class="modal__conten-input"
+							type="tel"
+							name="usertel"
+							placeholder="(998) 97 355 45 35"
+							required
+						/>
+						<button class="btn">Отправить</button>
+					</form>
+				</div>
 			</div>
 		</div>
 

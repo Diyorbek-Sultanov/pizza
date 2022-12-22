@@ -105,6 +105,10 @@ button {
 .pizza__item-desc {
 	font-size: 1rem;
 	margin-bottom: 0.7rem;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 .pizza__item-info {
@@ -203,6 +207,67 @@ button {
 
 .cart__price {
 	font-size: 1.2rem;
+}
+
+/* Modal */
+.modal {
+	display: none;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	background: rgba(255, 255, 255, 0.4);
+	backdrop-filter: blur(5px);
+}
+
+.modal.show {
+	display: block;
+}
+
+.modal__overley {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform: translateY(100px);
+	transition: transform 0.4s ease;
+}
+
+.modal.show .modal__overley {
+	transform: translateY(100px);
+}
+
+.modal__content {
+	width: 30%;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 10px;
+	position: relative;
+}
+
+.modal__content-close {
+	position: absolute;
+	top: 0;
+	right: 1rem;
+	font-size: 2rem;
+	cursor: pointer;
+	font-weight: var(--semi-bold);
+}
+
+.modal__content-form {
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	row-gap: 1.5rem;
+}
+
+.modal__conten-input {
+	outline: none;
+	padding: 10px 12px;
+	font-size: 1.2rem;
+	border-radius: 25px;
+	border: 1px solid #e86100;
 }
 
 /* ScrollBar */
