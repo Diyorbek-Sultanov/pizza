@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	const modal = document.getElementById('modal')
 	const showModalBtn = document.getElementById('show-modal')
 	const modalCloseBtn = document.getElementById('modal-close')
+	const form = document.getElementById('form')
 
 	let pizzaId = 1
 	let countPizza = 1
@@ -41,6 +42,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	// Removing pizzas
 	cartList.addEventListener('click', deletePizza)
+
+	// Form
+	form.addEventListener('submit', formHandler)
 
 	// Update cart info
 	function updateInfoCart() {
@@ -190,7 +194,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	let countValue = document.getElementById('count-val')
-	console.log(countValue)
 
 	function counterVal(e) {
 		if (e.target.classList.contains('plus')) {
@@ -201,6 +204,41 @@ window.addEventListener('DOMContentLoaded', () => {
 				countPizza--
 				countValue.innerHTML = countPizza
 			}
+		}
+	}
+
+	// Post request from API
+	async function formHandler(e) {
+		e.preventDefault()
+
+		const formData = new FormData(form)
+		formData.append('service_id', 'service_zil4kuu')
+		formData.append('template_id', 'template_0etxua8')
+		formData.append('user_id', 'taFhPA5iHAoG8HgJJ')
+
+		let obj = {}
+		formData.forEach((value, key) => {
+			obj[key] = value
+		})
+		console.log(obj)
+
+		try {
+			const options = {
+				method: 'POST',
+				body: JSON.stringify(obj),
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			}
+
+			const response = await fetch(
+				'https://api.emailjs.com/api/v1.0/email/send-form',
+				options
+			)
+			const data = await response.json()
+			console.log(data)
+		} catch (error) {
+			console.error('Error', error)
 		}
 	}
 })
