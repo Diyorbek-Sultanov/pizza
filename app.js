@@ -10,11 +10,12 @@ window.addEventListener('DOMContentLoaded', () => {
 	const showModalBtn = document.getElementById('show-modal')
 	const modalCloseBtn = document.getElementById('modal-close')
 	const form = document.getElementById('form')
+	const nameInput = document.getElementById('name-input')
+	const telInput = document.getElementById('tel-input')
 
 	let pizzaId = 1
 	let countPizza = 1
 
-	loadPizzas() // Pizzas load from JSON file
 	loadCart() // Load cart pizzas from LocalStorage
 
 	// Show/Hide cart
@@ -55,33 +56,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	updateInfoCart()
-
-	// Fetching pizzas from JSON File
-	function loadPizzas() {
-		fetch('./pizza.json')
-			.then(response => response.json())
-			.then(data => {
-				let html = ''
-				data.forEach(pizza => {
-					html += `
-						<div class="pizza__item">
-							<img src="${pizza.img}" alt="pizza" />
-							<h5 class="pizza__item-title">${pizza.title}</h5>
-							<p class="pizza__item-desc">${pizza.desc}</p>
-							<div class="pizza__item-info">
-								<h4 class="pizza__item-price">${pizza.price}</h4>
-								<button class="btn btn--pizza">Заказать</button>
-							</div>
-						</div>
-					`
-				})
-
-				pizzas.innerHTML = html
-			})
-			.catch(err => {
-				console.log('Error', err)
-			})
-	}
 
 	// Pizza
 	function purchasePizza(e) {
@@ -126,12 +100,14 @@ window.addEventListener('DOMContentLoaded', () => {
 			<button class="cart__item-close" type="button">&times;</button>
 		`
 		cartList.append(cartItem)
-
-		const counterWrap = document.getElementById('counter-wrap')
-
-		// Plus/Minus
-		counterWrap.addEventListener('click', counterVal)
 	}
+
+	const plusBtn = document.querySelector('.plus')
+	const minusBtn = document.querySelector('.minus')
+
+	// Plus/Minus
+	plusBtn.addEventListener('click', plusHandler)
+	minusBtn.addEventListener('click', minusHandler)
 
 	// Saving pizzas to LocalStorage
 	function saveToPizzaInStorage(item) {
@@ -195,50 +171,62 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	let countValue = document.getElementById('count-val')
 
-	function counterVal(e) {
-		if (e.target.classList.contains('plus')) {
-			countPizza++
-			countValue.textContent = countPizza
-		} else if (e.target.classList.contains('minus')) {
-			if (countPizza >= 1) {
-				countPizza--
-				countValue.innerHTML = countPizza
-			}
+	// Plus price
+	function plusHandler() {
+		countPizza++
+		countValue.textContent = countPizza.toString()
+
+		let products = getPizzaFromStorage()
+		let sum = products.reduce((total, product) => {
+			return parseFloat(product.price) * countPizza + total
+		}, 0)
+		cartPrice.textContent = sum
+	}
+
+	// Minus price
+	function minusHandler() {
+		if (countPizza === 1) {
+			return null
 		}
+		countPizza--
+		countValue.textContent = countPizza.toString()
+
+		let products = getPizzaFromStorage()
+		let sum = products.reduce((total, product) => {
+			return parseFloat(product.price) / countPizza + total
+		}, 0)
+
+		cartPrice.textContent = sum
 	}
 
 	// Post request from API
 	async function formHandler(e) {
 		e.preventDefault()
 
-		const formData = new FormData(form)
-		formData.append('service_id', 'service_zil4kuu')
-		formData.append('template_id', 'template_0etxua8')
-		formData.append('user_id', 'taFhPA5iHAoG8HgJJ')
-
-		let obj = {}
-		formData.forEach((value, key) => {
-			obj[key] = value
-		})
-		console.log(obj)
-
-		try {
-			const options = {
-				method: 'POST',
-				body: JSON.stringify(obj),
-				headers: {
-					'Content-Type': 'multipart/form-data',
-				},
-			}
-
-			const response = await fetch(
-				'https://api.emailjs.com/api/v1.0/email/send-form',
-				options
-			)
-			const data = await response.json()
-			console.log(data)
-		} catch (error) {
-			console.error('Error', error)
+		const data = {
+			service_id: 'service_zil4kuu',
+			template_id: 'template_w90wgmh',
+			user_id: 'taFhPA5iHAoG8HgJJ',
+			template_params: {
+				name: nameInput.value,
+				tel: telInput.value,
+			},
 		}
+
+		const options = {
+			method: 'POST',
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		}
+
+		const response = await fetch(
+			'https://api.emailjs.com/api/v1.0/email/send',
+			options
+		)
+
+		alert('Zakaz qabul qilindi')
+		modal.classList.remove('show')
 	}
 })

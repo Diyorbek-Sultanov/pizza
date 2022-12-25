@@ -26,7 +26,59 @@
 				</button>
 			</header>
 
-			<section class="pizza" id="pizzas"></section>
+			<section class="pizza" id="pizzas">
+				<div class="pizza__item">
+					<img src="./images/pizza-1.png" alt="pizza" />
+					<h5 class="pizza__item-title">Додо</h5>
+					<p class="pizza__item-desc">
+						Индейка, говядина, пепперони с говядиной, моцарелла из цельного
+						молока, шампиньоны, сладкий перец, красный лук, томатный соус,
+						томаты
+					</p>
+					<div class="pizza__item-info">
+						<h4 class="pizza__item-price">65000 сум</h4>
+						<button class="btn btn--pizza">Заказать</button>
+					</div>
+				</div>
+
+				<div class="pizza__item">
+					<img src="./images/pizza-1.png" alt="pizza" />
+					<h5 class="pizza__item-title">Четыре сезона</h5>
+					<p class="pizza__item-desc">
+						Моцарелла из цельного молока, индейка, пепперони с говядиной,
+						брынза, томаты, шампиньоны, томатный соус, итальянские травы
+					</p>
+					<div class="pizza__item-info">
+						<h4 class="pizza__item-price">55000 сум</h4>
+						<button class="btn btn--pizza">Заказать</button>
+					</div>
+				</div>
+
+				<div class="pizza__item">
+					<img src="./images/pizza-1.png" alt="pizza" />
+					<h5 class="pizza__item-title">Сырный цыпленок</h5>
+					<p class="pizza__item-desc">
+						Цыпленок, моцарелла из цельного молока, сырный соус, томаты
+					</p>
+					<div class="pizza__item-info">
+						<h4 class="pizza__item-price">45000 сум</h4>
+						<button class="btn btn--pizza">Заказать</button>
+					</div>
+				</div>
+
+				<div class="pizza__item">
+					<img src="./images/pizza-1.png" alt="pizza" />
+					<h5 class="pizza__item-title">Двойная пепперони</h5>
+					<p class="pizza__item-desc">
+						Пепперони с говядиной, увеличенная порция моцареллы из цельного
+						молока, томатный соус
+					</p>
+					<div class="pizza__item-info">
+						<h4 class="pizza__item-price">75000 сум</h4>
+						<button class="btn btn--pizza">Заказать</button>
+					</div>
+				</div>
+			</section>
 		</div>
 
 		<!-- Cart -->
@@ -57,14 +109,16 @@
 					<div class="modal__content-close" id="modal-close">&times;</div>
 					<form class="modal__content-form" id="form">
 						<input
-							class="modal__conten-input"
+							class="modal__content-input"
+							id="name-input"
 							type="text"
 							name="Name"
 							placeholder="Name"
 							required
 						/>
 						<input
-							class="modal__conten-input"
+							class="modal__content-input"
+							id="tel-input"
 							type="tel"
 							name="Tel"
 							placeholder="(998) 97 355 45 35"
